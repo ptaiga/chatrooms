@@ -58,3 +58,23 @@ function serveStatic(response, cache, absPath) {
         });
     }
 }
+
+// Создание HTTP-сервера с помощью анонимной функции,
+// определяющей его поведение при выполнении запросов
+var server = http.createServer(function(request, response) {
+    var filePath = false;
+    if (request.url == '/') {
+        // Определение HTML-файла, обслуживаемого по умолчанию
+        filePath = 'public/index.html';
+    } else {
+        // Преобразование URL-адреса в относительный путь к файлу
+        filePath = 'public' + request.url;
+    }
+    var absPath = './' + filePath;
+    // Обслуживание статического файла
+    serveStatic(response, cache, absPath);
+});
+
+server.listen(3000, function () {
+    console.log("Server listening on port 3000");
+});
