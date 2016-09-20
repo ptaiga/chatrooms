@@ -1,8 +1,6 @@
 {
     "name": "chatrooms",
-    // Название пакета
     "version": "0.0.1",
-    // Зависимости пакета
     "description": "Minimalist multiroom chat server",
     "dependencies": {
         "socket.io": "~0.9.6",
